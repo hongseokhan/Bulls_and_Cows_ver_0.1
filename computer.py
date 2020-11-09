@@ -1,11 +1,17 @@
 import random
 from player import Player
-from gameinterface import Gameinterface
+
 
 class Computer(Player):
 
     def __init__(self):
         super().__init__()
+        self._answer_candidates
+        self.__x
+        self.__y 
+        self.__z 
+        self.__w 
+
     @property
     def num_list(self):
         return self._num_list
@@ -65,4 +71,50 @@ class Computer(Player):
             game.show_result(attacker)
             if sb_total == 0:   D
             
-            
+    def _update_sb_numbers(self, solving_steps):
+        if solving_steps == 0:
+            self.__x = self.balls = self.strikes
+        elif solving_steps == 1:
+            self.__y = self.balls = self.strikes
+        elif solving_steps == 2:
+            self.__z = self.balls = self.strikes
+        elif solving_steps == 3:
+            self.__w = self.balls = self.strikes
+
+
+    def _make_attack_num(self, solving_steps):
+        if solving_steps == 0:
+            return [1,2,3,4]
+        elif solving_steps == 1:
+            return [3,4,5,6]
+        elif solving_steps == 2:
+            return [5,6,1,2]
+        elif solving_steps == 3:
+            return [1,2,7,8]
+        elif solving_steps == 4:
+            preapre_step_two(x, y, z, w)
+            solve_step_two()
+        elif
+            solve_step_three()
+
+    def preapre_step_two(self, x, y, z, w):
+        A = (x+y+z)/2 - y
+        B = (x+y+z)/2 - z
+        C = (x+y+z)/2 - x
+        D = w - ((x+y+z)/2 - y)
+        if (A+B+C+D) != 4:
+            E = 4-(A+B+C+D)
+        self._answer_candidates = (A, B, C, D, E)
+    
+    def solve_step_two(self):
+        self._answer_candidates
+        # check_answer_candidates()
+        num_two == ;
+        num_one == ;
+        if num_two == 2:
+
+        elif num_two == 1 && num_one == 2:
+
+        elif num_one == 4:
+
+    def solve_step_three(self):

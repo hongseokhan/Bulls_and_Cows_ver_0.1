@@ -6,12 +6,12 @@ class Human(Player):
         super().__init__()
     
     @property
-    def num_list(self):
-        return self._num_list
+    def defend_num_list(self):
+        return self._defend_num_list
     
-    @num_list.setter
-    def input_num_list(self,num_list):
-        self._num_list = num_list   
+    @defend_num_list.setter
+    def input_defend_num_list(self,num_list):
+        self._defend_num_list = num_list   
     
     def input_rule(self,num_list):
         flag = True
@@ -32,15 +32,25 @@ class Human(Player):
 
         return flag, message
     
-    def _receive_input_num_list(self):
+    def _receive_input_defend_num_list(self):
         flag = False
         
         while flag is False:
-            self._num_list = input('4자리 숫자를 입력하세요:')
+            self._defend_num_list = input('4자리 숫자를 입력하세요:')
         
-            flag, message = self.input_rule(self._num_list)
+            flag, message = self.input_rule(self._defend_num_list)
             if flag is False:
                 print(message)
             
         
+    def _make_attack_num(self):
+        flag = False
         
+        while flag is False:
+            attack_num = input('4자리 숫자를 입력하세요:')
+        
+            flag, message = self.input_rule(attack_num)
+            if flag is False:
+                print(message)
+            else:
+                return attack_num
