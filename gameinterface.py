@@ -18,7 +18,6 @@ class Gameinterface:
 
     def show_result(self,attacker):
         if attacker.strikes ==0 and attacker.balls == 0:
-            print(f'<{attacker.trys}차 시도>, Nothing 입니다.')
             print('-----------------------------------------------')
         
         else:
@@ -45,16 +44,14 @@ class Gameinterface:
                 print('플레이어 1의 공격차례 입니다.')
                 #attacker1._receive_input_num_list()
                 
-                palyer1._make_attack_num(solving_steps)
-                self.strikes_and_balls_counter(player1, player2)
+                player1._make_attack_num(solving_steps)
+                self.strikes_and_balls_counter(player1, player2,player1.attack_num_list)
                 player1._update_sb_numbers(solving_steps)
                 solving_steps += 1
                 self.show_result(player1)
-                    
-                    
                 print('플레이어 2의 공격차례 입니다.')
-                player2._receive_input_num_list()
-                self.strikes_and_balls_counter(player2,player1)
+                player2._make_attack_num_list()
+                self.strikes_and_balls_counter(player2,player1,player2.attack_num_list)
                 self.show_result(player2)
                 if player1.strikes == 4 or player2.strikes == 4:
                     self._show_result(player1,player2)
@@ -68,18 +65,16 @@ class Gameinterface:
             player1._receive_input_defend_num_list()
             print('player2의 수비 4자리 숫자를 선택해주세요')
             player2._receive_input_defend_num_list()
-                
-                
             while True:
                 print('-----------------------------------------------')
                 print('플레이어 1의 공격차례 입니다.')
-                player1_attack_num = player1._make_attack_num()
-                self.strikes_and_balls_counter(player1, player2, player1_attack_num)
+                player1._make_attack_num_list()
+                self.strikes_and_balls_counter(player1, player2, player1.attack_num_list)
                 self.show_result(player1)
                     
                 print('플레이어 2의 공격차례 입니다.')
-                player2_attack_num = player1._make_attack_num()
-                self.strikes_and_balls_counter(player2, player1, player2_attack_num)
+                player2._make_attack_num_list()
+                self.strikes_and_balls_counter(player2, player1, player2.attack_num_list)
                 self.show_result(player2)
                 if player1.strikes == 4 or player2.strikes == 4:
                     self._show_result(player1,player2)
