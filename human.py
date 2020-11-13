@@ -10,7 +10,7 @@ class Human(Player):
         return self._defend_num_list
     
     @defend_num_list.setter
-    def input_defend_num_list(self,defend_num_list):
+    def defend_num_list(self,defend_num_list):
         self._defend_num_list = defend_num_list   
 
     @property

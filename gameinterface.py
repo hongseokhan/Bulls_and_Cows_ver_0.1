@@ -13,13 +13,12 @@ class Gameinterface:
                         attacker.strikes += 1
                     else:
                         attacker.balls += 1
-        attacker.trys += 1
+        attacker.trys +=1
 
 
     def show_result(self,attacker):
         if attacker.strikes ==0 and attacker.balls == 0:
             print('-----------------------------------------------')
-        
         else:
             print(f'<{attacker.trys}차시도> {attacker.strikes}스트라이크 {attacker.balls}볼 입니다.')
             print('-----------------------------------------------')  
@@ -32,25 +31,22 @@ class Gameinterface:
             print("PVC 대전모드입니다")
             player1 = Computer()
             player2 =  Human()
-            print('player1의 숫자 4자리가 랜덤으로 발생하였습니다')
+            print('player1의 수비용 숫자 4자리가 랜덤으로 발생하였습니다')
             player1._random_generator()
-            print('player2의 4자리 숫자를 선택해주세요')
+            print('player2의 수비용 4자리 숫자를 선택해주세요')
             player2._receive_input_defend_num_list()
-
             solving_steps = 0
-
             while True:
                 print('-----------------------------------------------')
                 print('플레이어 1의 공격차례 입니다.')
-                #attacker1._receive_input_num_list()
-                
-                player1._make_attack_num(solving_steps)
+                player1.attack_num_list = player1._make_attack_num(solving_steps)
+                print(player1.attack_num_list)
                 self.strikes_and_balls_counter(player1, player2,player1.attack_num_list)
-                player1._update_sb_numbers(solving_steps)
-                solving_steps += 1
                 self.show_result(player1)
+                player1.stage_one_update_sb_numbers(solving_steps)
+                solving_steps += 1
                 print('플레이어 2의 공격차례 입니다.')
-                player2._make_attack_num_list()
+                player2._make_attack_num_list() 
                 self.strikes_and_balls_counter(player2,player1,player2.attack_num_list)
                 self.show_result(player2)
                 if player1.strikes == 4 or player2.strikes == 4:
@@ -89,19 +85,19 @@ class Gameinterface:
         elif player1.strikes == 4:
             print('\n player1님 축하합니다')
             print(f'{player1.trys}회 시도만에 성공 했습니다\n')
-            print(f'player2 가지고 있는 숫자는 {player2.num_list}입니다')
+            print(f'player2 가지고 있는 숫자는 {player2.defend_num_list}입니다')
             print('==============================================')
             print('\n player2님 아쉽습니다')
             print(f'{player2.trys}회 시도만에 게임에 패배 했습니다.')
-            print(f'player1이 가지고 있는 숫자는 {player1.num_list}입니다')
+            print(f'player1이 가지고 있는 숫자는 {player1.defend_num_list}입니다')
         
         elif player2.strikes == 4:        
             print('\n player2님 축하합니다')
             print(f'{player2.trys}회 시도만에 성공 했습니다\n')
-            print(f'player1 가지고 있는 숫자는 {player2.num_list}입니다')
+            print(f'player1 가지고 있는 숫자는 {player2.defend_num_list}입니다')
             print('==============================================')
             print('\n player1님 아쉽습니다')
             print(f'{player1.trys}회 시도만에 게임에 패배 했습니다')
-            print(f'player2 가지고 있는 숫자는 {player2.num_list}입니다')
+            print(f'player2 가지고 있는 숫자는 {player2.defend_num_list}입니다')
             
                 
